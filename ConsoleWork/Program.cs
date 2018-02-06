@@ -14,48 +14,49 @@ namespace ConsoleWork
 
 
             //查詢
-            //omgEntities selecttest = new omgEntities();
-            //string userID;
-            //Console.Write("輸入ID： ");
-            //userID = Console.ReadLine();
-            //int userid = int.Parse(userID);
+            omgEntities selecttest = new omgEntities();
+            string userID;
+            Console.Write("輸入ID： ");
+            userID = Console.ReadLine();
+            int userid = int.Parse(userID);
 
-            //var select = from p in selecttest.Table1
-            //             where p.ID == userid
-            //             select p;
-            //foreach (var x in select)
-            //{
-            //    Console.Write("{0}" + "--" + "{1}", x.ID, x.Number);
-            //}
-            //Console.ReadLine();
+            var select = from p in selecttest.Table1
+                         where p.ID == userid
+                         select p;
+            foreach (var x in select)
+            {
+                Console.Write(string.Format("{0}--{1}",x.ID,x.Number));
+                Console.Write($"{x.ID}--{x.Number}");
+            }
+            Console.ReadLine();
 
 
             //新增
-            //omgEntities test = new omgEntities();
+            omgEntities test = new omgEntities();
 
-            //string addnumber;
-            //Console.Write("輸入Number：");
-            //addnumber = Console.ReadLine();
+            string createid;
+            Console.Write("輸入Number：");
+            createid = Console.ReadLine();
 
-            //var ad1 = test.Table1.Create();
+            var ad1 = test.Table1.Create();
 
-            //ad1.Number = addnumber;
-            //test.Table1.Add(ad1);
-            //test.SaveChanges();
+            ad1.Number = createid;
+            test.Table1.Add(ad1);
+            test.SaveChanges();
 
             //修改
-            string userID;
-            string upnumber;
+            string EditID;
+            string upid;
             Console.Write("請輸入ID： ");
-            userID = Console.ReadLine();
+            EditID = Console.ReadLine();
             Console.Write("輸入Number：");
-            upnumber = Console.ReadLine();
-            int userid = int.Parse(userID);
+            upid = Console.ReadLine();
+            int editid = int.Parse(EditID);
 
             omgEntities test = new omgEntities();
-            Table1 Updatetest = test.Table1.Find(userid);
+            Table1 Updatetest = test.Table1.Find(editid);
 
-            Updatetest.Number = upnumber;
+            Updatetest.Number = upid;
 
             test.Entry(Updatetest).State = EntityState.Modified;
             test.SaveChanges();
@@ -64,10 +65,10 @@ namespace ConsoleWork
             //刪除
             omgEntities deletetest = new omgEntities();
 
-            string userID;
+            string deid;
             Console.Write("輸入ID：");
-            userID = Console.ReadLine();
-            int userid = int.Parse(userID);
+            deid = Console.ReadLine();
+            int id = int.Parse(deid);
 
             var delete = from p in deletetest.Table1
                          where p.ID == userid
